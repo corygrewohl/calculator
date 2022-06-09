@@ -1,0 +1,69 @@
+@font-face {
+    font-family: DigitalDream; src: url('DIGITALDREAM.TTF'); 
+} 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    color: white;
+}
+
+.container {
+    background-color: aquamarine;
+    height: 100vh;
+    padding: 5%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.display {
+    height: 80px;
+    width: 300px;
+
+    background-color: rgb(24, 18, 57);
+    border: 2px black solid;
+    flex-shrink: 0;
+
+    position: relative;
+}
+
+#display-inner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    font-family: DigitalDream, sans-serif;
+    font-size: 30px;
+}
+
+.buttons {
+    height: 300px;
+    width: 300px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    background-color: rgb(5, 5, 71);
+    border: 2px black solid;
+}
+
+button {
+    background-color: black;
+    width: 23%;
+    height: 59px;
+}
+
+button:hover {
+    background-color: rgb(30, 30, 30);
+}
+
+button:active {
+    background-color: yellow;
+}
