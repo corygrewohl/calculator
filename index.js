@@ -25,7 +25,7 @@
  * TODO
  * 1. Stop screen overflow
  * 2. Round long numbers
- * 3. Don't allow dividing by 0
+ * X Don't allow dividing by 0
  * 4. Floating point numbers (.)
  * 5. Backspace button
  * 6. Keyboard support
@@ -134,5 +134,8 @@ function multiply(a, b) {
 };
 
 function divide(a, b) {
+    if(b == 0){
+        return 'hey stop that';
+    }
     return(parseFloat(a) / parseFloat(b));
 }
