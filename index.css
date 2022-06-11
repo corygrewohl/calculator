@@ -7,11 +7,12 @@
     padding: 0;
     box-sizing: border-box;
 
-    color: white;
+    color: black;
+    font-size: 20px;
 }
 
 .container {
-    background-color: aquamarine;
+    background-color: #CEEAF7;
     height: 100vh;
     padding: 5%;
 
@@ -23,11 +24,11 @@
 }
 
 .display {
-    height: 80px;
-    width: 300px;
+    height: 100px;
+    width: 400px;
 
-    background-color: rgb(24, 18, 57);
-    border: 2px black solid;
+    background-color: #CCD7E4;
+    border: 3px black solid;
     flex-shrink: 0;
 
     position: relative;
@@ -39,31 +40,31 @@
     right: 0;
 
     font-family: DigitalDream, sans-serif;
-    font-size: 30px;
+    font-size: 60px;
 }
 
 .buttons {
-    height: 300px;
-    width: 300px;
+    height: 400px;
+    width: 400px;
 
     display: flex;
     justify-content: center;
     flex-direction: column;
 
-    background-color: rgb(5, 5, 71);
-    border: 2px black solid;
+    background-color: #828A95;
+    border: 3px black solid;
 }
 
 button {
-    background-color: black;
-    width: 23%;
-    height: 59px;
+    background-color: #D5C9DF;
+    width: 24%;
+    height: 78px;
 }
 
 button:hover {
-    background-color: rgb(30, 30, 30);
+    background-color: #DCB8CB;
 }
 
 button:active {
-    background-color: yellow;
+    background-color: #F5EE9E;
 }

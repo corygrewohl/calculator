@@ -32,7 +32,13 @@
  * 7. Make it look nice
  */
 
+/**
+ * BUGS
+ * Breaks if you're chaining operations, and you switch an operation before you type a new number.
+ */
+
 let operation = '';
+let newOperationPressed = false;
 let equalsPressed = false;
 const numberArray = [];
 
@@ -41,14 +47,10 @@ function takeInput(input){
     //checks for number
     if(Number.isFinite(input)){
         //resets screen if equals was pressed before hand (new calculation)
-        if(equalsPressed == true){
+        if(equalsPressed == true || newOperationPressed == true){
             updateDisplay('');
             equalsPressed = false;
-        }
-        //this is for clicking another operation after a previous one
-        if(document.getElementById('display-inner').innerText != '' && operation != ''){
-            numberArray[0] = document.getElementById('display-inner').innerText;
-            updateDisplay('');
+            newOperationPressed = false;
         }
         document.getElementById('display-inner').innerText += input;
     }
@@ -68,12 +70,16 @@ function takeInput(input){
         } else if(numberArray.length == 1){ //checks if numberArray has 1 value
                 numberArray.push(document.getElementById('display-inner').innerText);
                 updateDisplay('');
-        } 
+        }
+        //evaluates if 2 numbers are in the array (this only happens when another operation is selected in place of the equals)
         if(numberArray.length == 2){
-            updateDisplay(operator(operation, numberArray[0], numberArray[1]));
+            let answer = roundAnswer(operator(operation, numberArray[0], numberArray[1]));
+            updateDisplay(answer);
             numberArray.pop();
             numberArray.pop();
             operation = input;
+            numberArray[0] = document.getElementById('display-inner').innerText;
+            newOperationPressed = true;
         }
     }
 
@@ -84,13 +90,26 @@ function takeInput(input){
             updateDisplay(numberArray[0]);
         } else {
             numberArray.push(document.getElementById('display-inner').innerText);
-            updateDisplay(operator(operation, numberArray[0], numberArray[1]));
+            let answer = roundAnswer(operator(operation, numberArray[0], numberArray[1]));
+            updateDisplay(answer);
         }
         numberArray.pop();
         numberArray.pop();
         operation = '';
         equalsPressed = true;
     }
+    
+    //checks for floating point
+    if(input == '.'){
+        if(!document.getElementById('display-inner').innerText.includes('.')){
+            document.getElementById('display-inner').innerText += input;
+        }
+        
+    }
+}
+
+function roundAnswer(answer){
+    return Math.round(answer * 1000) / 1000;
 }
 
 function allClear(){
@@ -99,8 +118,6 @@ function allClear(){
     numberArray.pop();
     updateDisplay('');
 }
-
-
 
 function updateDisplay(input) {
     document.getElementById('display-inner').innerText = input;
